@@ -1,3 +1,5 @@
+import sys
+
 def cullent_location(disc):
     for pile in piles:
         try:
@@ -34,8 +36,13 @@ def tower(disc, destination):
 
 
 print('Please input n:')
-n = int(input())
-piles = [[d+1 for d in range(n)], [], []]
+try:
+    n = int(input())
+except:
+    print('invalid input')
+    sys.exit()
+
+piles = [[i+1 for i in range(n)], [], []]
 count = []
 print(0, piles)
 tower(n, 2)
