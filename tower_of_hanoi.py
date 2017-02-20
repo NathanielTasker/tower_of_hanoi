@@ -1,6 +1,7 @@
 import sys
 
-def cullent_location(disc):
+
+def current_location(disc):
     for pile in piles:
         try:
             return piles.index(pile), pile.index(disc)
@@ -9,14 +10,14 @@ def cullent_location(disc):
 
 
 def ismovable(disc, destination): #piles[destination]
-    if cullent_location(disc)[1] == 0 and (len(piles[destination]) == 0 or disc < piles[destination][0]):
+    if current_location(disc)[1] == 0 and (len(piles[destination]) == 0 or disc < piles[destination][0]):
         return True
     else:
         return False
 
 
 def move(disc, destination):
-    tmp = piles[cullent_location(disc)[0]].pop(0)
+    tmp = piles[current_location(disc)[0]].pop(0)
     piles[destination].insert(0, tmp)
 
 
@@ -30,7 +31,7 @@ def tower(disc, destination):
         else:
             tower(disc-1, destination)
     else:
-        new_destination = 3 - (destination + cullent_location(disc)[0])
+        new_destination = 3 - (destination + current_location(disc)[0])
         tower(disc-1, new_destination)
         tower(disc, destination)
 
