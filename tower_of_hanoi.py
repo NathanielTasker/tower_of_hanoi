@@ -1,41 +1,41 @@
-def cullent_location(a):
-    for pile in p:
+def cullent_location(disc):
+    for pile in piles:
         try:
-            return p.index(pile), pile.index(a)
+            return piles.index(pile), pile.index(disc)
         except:
             pass
 
 
-def ismovable(a, x): #p[x]
-    if cullent_location(a)[1] == 0 and (len(p[x]) == 0 or a < p[x][0]):
+def ismovable(disc, destination): #piles[destination]
+    if cullent_location(disc)[1] == 0 and (len(piles[destination]) == 0 or disc < piles[destination][0]):
         return True
     else:
         return False
 
 
-def move(a, x):
-    tmp = p[cullent_location(a)[0]].pop(0)
-    p[x].insert(0, tmp)
+def move(disc, destination):
+    tmp = piles[cullent_location(disc)[0]].pop(0)
+    piles[destination].insert(0, tmp)
 
 
-def tower(a, x):
-    if ismovable(a, x):
-        move(a, x)
+def tower(disc, destination):
+    if ismovable(disc, destination):
+        move(disc, destination)
         count.append('')
-        print(len(count), p)
-        if a == 1:
+        print(len(count), piles)
+        if disc == 1:
             pass
         else:
-            tower(a-1, x)
+            tower(disc-1, destination)
     else:
-        y = 3 - (x + cullent_location(a)[0])
-        tower(a-1, y)
-        tower(a, x)
+        new_destination = 3 - (destination + cullent_location(disc)[0])
+        tower(disc-1, new_destination)
+        tower(disc, destination)
 
 
 print('Please input n:')
 n = int(input())
-p = [[d+1 for d in range(n)], [], []]
+piles = [[d+1 for d in range(n)], [], []]
 count = []
-print(0, p)
+print(0, piles)
 tower(n, 2)
