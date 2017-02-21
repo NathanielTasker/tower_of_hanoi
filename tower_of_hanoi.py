@@ -22,10 +22,11 @@ def move(disc, destination):
 
 
 def tower(disc, destination):
+    global count
     if ismovable(disc, destination):
         move(disc, destination)
-        count.append('')
-        print(len(count), piles)
+        count += 1
+        print(count, piles)
         if disc == 1:
             pass
         else:
@@ -44,6 +45,6 @@ except:
     sys.exit()
 
 piles = [[i+1 for i in range(n)], [], []]
-count = []
+count = 0
 print(0, piles)
 tower(n, 2)
