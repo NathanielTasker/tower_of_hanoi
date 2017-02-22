@@ -28,9 +28,9 @@ def is_movable(disc, destination):
     returns True/False by whether or not disc is movable to destination
     (destination must be index number of piles)
     """
-    is_disc_at_the_top = location(disc)[1] == 0
+    disc_is_at_the_top = location(disc)[1] == 0
     dest_pile_is_acceptable = len(piles[destination]) == 0 or disc < piles[destination][0]
-    return is_disc_at_the_top and dest_pile_is_acceptable
+    return disc_is_at_the_top and dest_pile_is_acceptable
 
 
 def move(disc, destination):
