@@ -1,5 +1,5 @@
 '''
-This program solves stack of Hanoi puzzle
+This program solves Tower of Hanoi puzzle
 in minimum number of moves.
 The puzzle starts with the disks in a neat stack
 in ascending order of size on one rod,
@@ -25,7 +25,7 @@ def location(disc):
 
 def is_movable(disc, destination):
     """
-    returns True/False by whether disc is movable to destination or not
+    returns True/False by whether or not disc is movable to destination
     (destination must be index number of piles)
     """
     is_disc_at_the_top = location(disc)[1] == 0
